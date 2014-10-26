@@ -1,0 +1,74 @@
+
+float size1 = random(10, 20);
+float size2 = 90;
+color c;
+
+void setup() {
+
+  size (700, 700);
+  background(255);
+}
+
+void draw() {
+
+  noCursor();
+  for (int i =35; i <= height; i = i+70) {
+    for (int x = 0; x<= width; x = x+10) {
+      strokeWeight(1);
+      stroke(c, 40);
+      line(x, 0, x, height);
+    }
+    for (int y = 0; y<= height; y=y+10) {
+      strokeWeight(1);
+      stroke(c, 40);
+      line(0, y, width, y);
+    }
+    //middle rect
+
+    float r = map(mouseX, 0, 700, 80, 255);
+    float g = map(mouseY, 0, 700, 100, 255);
+    float b = random(150, 255);
+    int alph1=15;
+    int c1 = 150;
+    c = color(r, g, b, 4);
+    strokeWeight(5);
+    stroke(c, 255);
+    rectMode(CENTER);
+    fill(c);
+    rect(i, i, size1, size2);
+    size1 = size1*1.05;
+    size2 = size2*1.02;
+    //alph1 = alph1 +10;
+
+
+    if (size1 >= width || size2 >=height ) {
+      size1 = 20;
+      size2 = 20;
+
+      //c = color(random(0,100),0,random(50,70),random(0,50));
+      for (int z = 30; z <= width; z = z+70) {
+        for (int j = 70; j <= height; j=j+70) {
+          float new_r = 255-r;
+          float new_g = 255-g;
+          float new_b = 355-b;
+          color t = color(new_r, new_g, new_b, 5);
+          //strokeWeight(1);
+          //stroke(t,90);
+          noStroke();
+          rectMode(CENTER);
+          fill(c);
+          rect(z, j, 40, 200);
+
+          //size1 = size1*1.02;
+          //size2 = size2*1.05;
+          //alph1 = alph1 +10; 
+          c1++;
+          if (c1 >=230) {
+            c1 = 120;
+          }
+        }
+      }
+    }
+  }
+}
+
