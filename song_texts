@@ -1,0 +1,543 @@
+
+String [] words0; 
+String [] words1; 
+String [] words2; 
+String [] words3;
+String [] words4;
+String [] words5;
+String [] words6;
+String [] words7;
+String [] words8;
+boolean click = false;
+int state = 0;
+
+//minim import
+import ddf.minim.spi.*;
+import ddf.minim.signals.*;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.ugens.*;
+import ddf.minim.effects.*;
+
+
+//minim variables
+Minim minim;
+AudioPlayer player0;
+AudioPlayer player1;
+AudioPlayer player2;
+AudioPlayer player3;
+AudioPlayer player4;
+AudioPlayer player5;
+AudioPlayer player6;
+AudioPlayer player7;
+AudioPlayer player8;
+
+AudioInput input;
+
+
+void setup() {
+  size(900, 750);
+
+  //sound setup
+  minim = new Minim(this);
+  player0 = minim.loadFile("song0.mp3");
+  player1 = minim.loadFile("song1.mp3");
+  player2 = minim.loadFile("song2.mp3");
+  player3 = minim.loadFile("song3.mp3");
+  player4 = minim.loadFile("song4.mp3");
+  player5 = minim.loadFile("song5.mp3");
+  player6 = minim.loadFile("song6.mp3");
+  player7 = minim.loadFile("song7.mp3");
+  player8 = minim.loadFile("song8.mp3");
+  input = minim.getLineIn();
+
+  //sweet child of mine load
+  String[] lines = loadStrings("song0.txt");
+  String allthetxt = join(lines, " ");
+  words0 = splitTokens(allthetxt, " ,.:;!");
+
+
+  //foxy lady load
+  String[] lines1 = loadStrings("song3.txt");
+  String allthetxt1 = join(lines1, " ");
+  words1 = splitTokens(allthetxt1, " ,.:;!");
+
+  //changes load
+  String[] lines2 = loadStrings("song4.txt");
+  String allthetxt2 = join(lines2, " ");
+  words2 = splitTokens(allthetxt2, " ,.:;!");
+
+  //isn't she lovely load
+  String[] lines3 = loadStrings("song5.txt");
+  String allthetxt3 = join(lines3, " ");
+  words3 = splitTokens(allthetxt3, " ,.:;!");
+
+  //pretty woman load
+  String[] lines4 = loadStrings("song6.txt");
+  String allthetxt4 = join(lines4, " ");
+  words4 = splitTokens(allthetxt4, " ,.:;!");
+
+  //river of dreams
+  String[] lines5 = loadStrings("song7.txt");
+  String allthetxt5 = join(lines5, " ");
+  words5 = splitTokens(allthetxt5, " ,.:;!");
+
+  //Sweet Melissa
+  String[] lines6 = loadStrings("song8.txt");
+  String allthetxt6 = join(lines6, " ");
+  words6 = splitTokens(allthetxt6, " ,.:;!");
+
+  //Rhianon
+  String[] lines7 = loadStrings("song2.txt");
+  String allthetxt7 = join(lines7, " ");
+  words7 = splitTokens(allthetxt7, " ,.:;!");
+
+  //black or white
+  String[] lines8 = loadStrings("song9.txt");
+  String allthetxt8 = join(lines8, " ");
+  words8 = splitTokens(allthetxt8, " ,.:;!");
+}
+
+
+void draw() {
+  background(0);
+  smooth();
+
+  //sweet child of mine text
+  int song0r= 50; 
+  //int song0g= 50; 
+  int song0b= 50; 
+  float song0y = 10;
+  float song0x = 2;
+  for (int i = 0; i < words0.length; i++) {
+
+    fill(song0r, song0b, song0b);
+    textSize(10);
+    text(words0[i], song0x, song0y);
+    song0x= song0x+ (textWidth(words0[i])+4);
+    song0b++;
+    if (song0x >= width-30) {
+      song0x = 2;
+      song0y = song0y +12;
+    }
+    if (mouseY <= 90) {
+      song0r= 255; 
+      //int song0g= 50; 
+      song0b= 255;
+    }
+  }
+
+
+  //foxy lady
+  int song1r= 50; 
+  int song1g= 50; 
+  int song1b= 50; 
+  float song1y = 90;
+  float song1x = 2;
+  for (int j = 0; j < words1.length; j++) {
+    fill(song1r, song1g, song1b);
+    textSize(10);
+    text(words1[j], song1x, song1y);
+    song1x= song1x + (textWidth(words1[j])+4);
+    song1r++;
+    song1g++;
+    if (song1x >= width-30) {
+      song1x = 2;
+      song1y = song1y +12;
+    }
+    if (mouseY > 90 && mouseY <150) {
+      song1r= 255; 
+      song1g= 255; 
+      song1b= 255;
+    }
+  }
+
+  //changes 
+  int song2r= 50; 
+  int song2g= 50; 
+  int song2b= 50; 
+  float song2y = 150;
+  float song2x = 2;
+  for (int k = 0; k < words2.length; k++) {
+    fill(song2r, song2g, song2b);
+    textSize(10);
+    text(words2[k], song2x, song2y);
+    song2x= song2x + (textWidth(words2[k])+4);
+    song2r++;
+    song2b++;
+    if (song2x >= width-30) {
+      song2x = 2;
+      song2y = song2y +12;
+    }if (mouseY > 150 && mouseY <270) {
+      song2r= 255; 
+      song2g= 255; 
+      song2b= 255;
+    }
+  }
+
+
+  //foxy lady
+  int song3r= 50; 
+  //int song0g= 50; 
+  int song3b= 50; 
+  float song3y = 270;
+  float song3x = 2;
+  for (int u = 0; u < words3.length; u++) {
+
+    fill(song3r, song3b, song3b);
+    textSize(10);
+    text(words3[u], song3x, song3y);
+    song3x= song3x+ (textWidth(words3[u])+4);
+    song3b++;
+    if (song3x >= width-30) {
+      song3x = 2;
+      song3y = song3y +12;
+    }if (mouseY > 270 && mouseY <325) {
+      song3r= 255; 
+      //song3g= 255; 
+      song3b= 255;
+    }
+  }
+
+  //pretty woman
+  int song4r= 50; 
+  int song4g= 50; 
+  int song4b= 50; 
+  float song4y = 325;
+  float song4x = 2;
+  for (int w = 0; w < words4.length; w++) {
+    fill(song4r, song4g, song4b);
+    textSize(10);
+    text(words4[w], song4x, song4y);
+    song4x= song4x + (textWidth(words4[w])+4);
+    song4r++;
+    song4g++;
+    if (song4x >= width-30) {
+      song4x = 2;
+      song4y = song4y +12;
+    }if (mouseY > 325 && mouseY <395) {
+      song4r= 255; 
+      song4g= 255; 
+      song4b= 255;
+    }
+  }
+
+
+  //river of dreams 
+  int song5r= 50; 
+  int song5g= 50; 
+  int song5b= 50; 
+  float song5y = 395;
+  float song5x = 2;
+  for (int z = 0; z < words5.length; z++) {
+    fill(song5r, song5g, song5b);
+    textSize(10);
+    text(words5[z], song5x, song5y);
+    song5x= song5x + (textWidth(words5[z])+4);
+    song5r++;
+    song5b++;
+    if (song5x >= width-30) {
+      song5x = 2;
+      song5y = song5y +12;
+    }if (mouseY > 395 && mouseY <500) {
+      song5r= 255; 
+      song5g= 255; 
+      song5b= 255;
+    }
+  }
+
+  //sweet Melissa
+  int song6r= 50; 
+  //int song0g= 50; 
+  int song6b= 50; 
+  float song6y = 500;
+  float song6x = 2;
+  for (int f = 0; f < words6.length; f++) {
+
+    fill(song6r, song6b, song6b);
+    textSize(10);
+    text(words6[f], song6x, song6y);
+    song6x= song6x+ (textWidth(words6[f])+4);
+    song6b++;
+    if (song6x >= width-30) {
+      song6x = 2;
+      song6y = song6y +12;
+    }if (mouseY > 500 && mouseY <570) {
+      song6r= 255; 
+      //song6g= 255; 
+      song6b= 255;
+    }
+  }
+
+  //rhianon
+  int song7r= 50; 
+  int song7g= 50; 
+  int song7b= 50; 
+  float song7y = 570;
+  float song7x = 2;
+  for (int q = 0; q < words7.length; q++) {
+
+    fill(song7r, song7g, song7b);
+    textSize(10);
+    text(words7[q], song7x, song7y);
+    song7x= song7x+ (textWidth(words7[q])+4);
+    song7r++;
+    song7g++;
+    if (song7x >= width-30) {
+      song7x = 2;
+      song7y = song7y +12;
+    }if (mouseY > 570 && mouseY <650) {
+      song7r= 255; 
+      song7g= 255; 
+      song7b= 255;
+    }
+  }
+
+  //black or white
+  int song8r= 50; 
+  int song8g= 50; 
+  int song8b= 50; 
+  float song8y = 650;
+  float song8x = 2;
+  for (int o = 0; o < words8.length; o++) {
+    fill(song8r, song8g, song8b);
+    textSize(10);
+    text(words8[o], song8x, song8y);
+    song8x= song8x + (textWidth(words8[o])+4);
+    song8r++;
+    song8b++;
+    if (song8x >= width-30) {
+      song8x = 2;
+      song8y = song8y +12;
+    }if (mouseY > 650) {
+      song8r= 255; 
+      song8g= 255; 
+      song8b= 255;
+    }
+  }
+
+  if (mouseY <= song0y) {
+
+    //player0.cue(0);
+    player0.play();
+
+    player1.pause();
+    player1.rewind();
+
+    player2.pause();
+    player2.rewind();
+
+    player3.pause();
+    player3.rewind();
+
+    player4.pause();
+    player4.rewind();
+
+    player5.pause();
+    player5.rewind();
+
+    player6.pause();
+    player6.rewind();
+
+    player7.pause();
+    player7.rewind();
+
+    player8.pause();
+    player8.rewind();
+  }
+  if (mouseY > song0y && mouseY <= song1y) {
+    player1.play();
+
+    player0.pause();
+    player0.rewind();
+
+    player2.pause();
+    player2.rewind();
+
+    player3.pause();
+    player3.rewind();
+
+    player4.pause();
+    player4.rewind();
+
+    player5.pause();
+    player5.rewind();
+
+    player6.pause();
+    player6.rewind();
+
+    player7.pause();
+    player7.rewind();
+
+    player8.pause();
+    player8.rewind();
+  }
+  if (mouseY > song1y && mouseY <= song2y) {
+    player2.play();
+
+    player1.pause();
+    player1.rewind();
+
+    player3.pause();
+    player3.rewind();
+
+    player4.pause();
+    player4.rewind();
+
+    player5.pause();
+    player5.rewind();
+
+    player6.pause();
+    player6.rewind();
+
+    player7.pause();
+    player7.rewind();
+
+    player8.pause();
+    player8.rewind();
+  }
+  if (mouseY > song2y && mouseY <= song3y) {
+    player3.play();
+
+    player1.pause();
+    player1.rewind();
+
+    player2.pause();
+    player2.rewind();
+
+    player4.pause();
+    player4.rewind();
+
+    player5.pause();
+    player5.rewind();
+
+    player6.pause();
+    player6.rewind();
+
+    player7.pause();
+    player7.rewind();
+
+    player8.pause();
+    player8.rewind();
+  }
+  if (mouseY > song3y && mouseY <= song4y) {
+    player4.play();
+
+    player1.pause();
+    player1.rewind();
+
+    player2.pause();
+    player2.rewind();
+
+    player3.pause();
+    player3.rewind();
+
+    player5.pause();
+    player5.rewind();
+
+    player6.pause();
+    player6.rewind();
+
+    player7.pause();
+    player7.rewind();
+
+    player8.pause();
+    player8.rewind();
+  }
+  if (mouseY > song4y && mouseY <= song5y) {
+    player5.play();
+
+    player1.pause();
+    player1.rewind();
+
+    player2.pause();
+    player2.rewind();
+
+    player3.pause();
+    player3.rewind();
+
+    player4.pause();
+    player4.rewind();
+
+    player6.pause();
+    player6.rewind();
+
+    player7.pause();
+    player7.rewind();
+
+    player8.pause();
+    player8.rewind();
+  }
+  if (mouseY > song5y && mouseY <= song6y) {
+    player6.play();
+
+    player1.pause();
+    player1.rewind();
+
+    player2.pause();
+    player2.rewind();
+
+    player3.pause();
+    player3.rewind();
+
+    player4.pause();
+    player4.rewind();
+
+    player5.pause();
+    player5.rewind();
+
+    player7.pause();
+    player7.rewind();
+
+    player8.pause();
+    player8.rewind();
+  }
+  if (mouseY > song6y && mouseY <= song7y) {
+    player7.play();
+
+    player1.pause();
+    player1.rewind();
+
+    player2.pause();
+    player2.rewind();
+
+    player3.pause();
+    player3.rewind();
+
+    player4.pause();
+    player4.rewind();
+
+    player5.pause();
+    player5.rewind();
+
+    player6.pause();
+    player6.rewind();
+
+    player8.pause();
+    player8.rewind();
+  }
+  if (mouseY > song7y ) {
+    player8.play();
+
+    player1.pause();
+    player1.rewind();
+
+    player2.pause();
+    player2.rewind();
+
+    player3.pause();
+    player3.rewind();
+
+    player4.pause();
+    player4.rewind();
+
+    player5.pause();
+    player5.rewind();
+
+    player6.pause();
+    player6.rewind();
+
+    player7.pause();
+    player7.rewind();
+  }
+}
