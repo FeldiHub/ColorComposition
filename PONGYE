@@ -1,0 +1,153 @@
+//minim import
+import ddf.minim.spi.*;
+import ddf.minim.signals.*;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.ugens.*;
+import ddf.minim.effects.*;
+
+
+
+//minim variables
+Minim minim;
+AudioPlayer player;
+AudioPlayer player2;
+AudioInput input;
+
+//initial x/y location
+float ballX = 400; 
+float ballY = 300;
+float ballWidth = 50;
+
+//movement variables
+float xSpeed = 3; 
+float ySpeed = 2;
+float xDirection = 3; 
+float yDirection = 2;
+
+//paddle dimensions
+float paddleWidth = 20;
+float paddleHeight = 150;
+
+//Create game states
+int gameState = 0;
+int i;
+
+boolean click = false;
+int r;
+
+void setup() {
+  size(800, 600);
+
+  //sound setup
+  minim = new Minim(this);
+  player = minim.loadFile("song.mp3");
+  player2 = minim.loadFile("song2.mp3");
+  input = minim.getLineIn();
+}
+
+void draw() {
+  background(0);
+  noCursor();
+
+  if (gameState == 0) {
+    r = int(random(0, 12));
+    textSize(25);
+    text("CLICK TO START", 300, 150);
+    ballX = 400; 
+    ballY = 300;
+    drawKanye();
+    rightPaddle();
+    leftPaddle();
+    if (click) {
+      gameState = 1;
+    }
+  }
+  if (gameState == 1) {
+    drawKanye();
+    rightPaddle();
+    leftPaddle();
+    moveKanye();
+    bounceKanye();
+  }
+  if (gameState == 2) {
+    gameOver();
+    if (!click) {
+      gameState = 0;
+    }
+  }
+}
+
+
+
+void drawKanye() {
+
+
+  PImage[] myImageArray = new PImage[12];
+  for (int i=0; i<myImageArray.length; i++) {
+    myImageArray [i] = loadImage("KANYE" + i + ".PNG");
+  }
+
+  imageMode(CENTER);
+  image(myImageArray[r], ballX, ballY);
+}
+
+void moveKanye() {
+
+
+  ballX = ballX + (xSpeed * xDirection);
+  ballY = ballY + (ySpeed * yDirection);
+}
+
+
+void bounceKanye() {
+
+
+  if (ballY >= height-ballWidth || ballY <= ballWidth) {
+    yDirection *= -1;
+  }
+  if (ballX > width-ballWidth && ballY >= mouseY && ballY <= mouseY+paddleHeight && ballX < width) {
+    player.cue(0);
+    player.play();
+    xDirection *= -1.2;
+  }
+  if (ballX < ballWidth && ballY >= mouseY && ballY <= mouseY+paddleHeight && ballX > 0) {
+    player.cue(0);
+    player.play();
+    xDirection *= -1.2;
+  } else if (ballX < 0 || ballX > width) {
+    player2.cue(0);
+    player2.play();
+    gameState = 2;
+  }
+}
+
+
+
+void rightPaddle() {
+  noStroke();
+  fill(255);
+  rect(10, mouseY, paddleWidth, paddleHeight);
+}
+
+void leftPaddle() {
+  noStroke();
+  fill(255);
+  rect(width-paddleWidth-10, mouseY, paddleWidth, paddleHeight);
+}
+
+void gameOver() {
+  // player2.cue(0);
+  // player2.play();
+  PImage kim;
+  kim = loadImage("game_over.jpg");
+  imageMode(CENTER);
+  image(kim, width/2, height/2);
+  // player2.cue(0);
+  // player2.play();
+}
+
+void mousePressed() {
+  click = !click;
+}
+
