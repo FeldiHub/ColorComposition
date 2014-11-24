@@ -1,0 +1,82 @@
+console.log('hello');
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+}
+
+function draw() {
+	if (mouseIsPressed == true){
+		line(mouseX,mouseY,pmouseX,pmouseY);
+	}
+}
+
+var canvas = document.getElementById("htmlCanvas");
+
+
+function saveScreen() {
+ console.log('keydown!');
+}
+
+
+
+
+// Converts canvas to an image
+function convertCanvasToImage() {
+	var img    = canvas.toDataURL("image/png");
+   document.write('<img src="'+img+'"/>');
+   console.log(img);
+}
+
+document.addEventListener("keydown", convertCanvasToImage);
+
+
+
+
+
+
+
+// Instantiate the client proxy
+// You may need to adjust the path to reflect the URI of your server proxy
+var temboo = new TembooProxy('proxy-server.js');
+console.log(temboo);
+
+// Add the sendSMS Choreo
+var sendSMSChoreo = temboo.addChoreo('jsSendSMS');
+
+// Add inputs
+sendSMSChoreo.setInput('AuthToken', '53a5a622dcd1d2eaa28500c90dfc3d36');
+sendSMSChoreo.setInput('Body', 'link to image');
+sendSMSChoreo.setInput('To', '+15165240065');
+sendSMSChoreo.setInput('AccountSID', 'AC9bb3c57bee7aaff7586beb1edf8222c4');
+sendSMSChoreo.setInput('From', '+15162521066');
+
+// Success callback
+var showResult = function(outputs, outputFilters) {
+    // Display outputs
+    if(outputFilters) {
+    	// Display named output filters
+        for(var name in outputFilters) {
+            console.log(name + ':');
+            for(var item in outputs[name]) {
+                console.log('    ' + outputs[name][item]);
+            }
+        }
+    } else {
+    	// Display raw outputs
+        for(var name in outputs) {
+            console.log(name + ': ' + outputs[name]);
+        }
+    }
+};
+
+// Error callback
+var showError = function(error) {
+    if(error.type === 'DisallowedInput') {
+        console.log(error.type + ' error: ' + error.inputName);
+    } else {
+        console.log(error.type + ' error: ' + error.message);
+    }
+};
+
+// Run the Choreo, specifying success and error callback handlers
+sendSMSChoreo.execute(showResult, showError);
