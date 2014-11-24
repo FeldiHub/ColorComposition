@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Untitled</title>
+    
+  <script src="libraries/p5.js" type="text/javascript"></script>
+  <!--<script src="libraries/temboo.js" type="text/javascript"></script>-->
+  <script src="js-sdk/js/temboo.js"></script>
+  <script src="sketch.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="htmlCanvas">
+    </div>
+
+  </body>
+
+
+</html>
