@@ -1,0 +1,35 @@
+//video library import
+import processing.video.Capture;
+//initial value of brush stroke when program is opened
+color value = color(0, 0, 0);
+//initial width of stroke 
+float diam = 10;
+//Used to change state
+boolean canDraw = false;
+//video variable
+Capture cam;
+
+//image file number
+int n=0;
+//to find web cam to use
+String[] cameras = Capture.list();
+
+
+void setup() {
+  size(1200, 700);
+  background(255);
+  //cursorImg = loadImage("icon_6075.png");
+  imageMode(CORNER);
+  camRestart();
+  
+}
+
+void draw() {
+   drawMenu();
+  println(frameRate);
+  if (canDraw == false) {
+    capture();
+  } else {
+    drawPicture();
+  }
+}
