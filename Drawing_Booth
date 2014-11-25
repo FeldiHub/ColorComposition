@@ -14,6 +14,277 @@ int n=0;
 //to find web cam to use
 String[] cameras = Capture.list();
 
+PImage imageCaptured;
+
+//dividers etc
+int y0 = 0;
+int y50 = 50;
+int y100 = 100;
+int y150 = 150;
+int y200 = 200;
+int y250 = 250;
+int y450 = 450;
+int y500 = 500;
+int y550 = 550;
+int y650 = 650;
+int x0 = 0;
+int x50 = 50;
+int x100 = 100;
+int x150 = 150;
+int swatchWidth = 50;
+int menuWidth = 200;
+
+//colors
+color black = color(0);
+color white = color(255);
+color red = color(252, 79, 73);
+color darkPink = color(203, 64, 83);
+color pink = color(238, 32, 78);
+color lightPurple = color(255, 169, 204);
+color purple = color(146, 110, 174);
+color lightBlue = color(28, 121, 239);
+color blue = color(26, 73, 119);
+color green = color(33, 170, 119);
+color lightGreen = color(160, 226, 191);
+color lime = color(187, 207, 108);
+color yellow = color(253, 231, 130);
+color lightOrange = color(231, 199, 152);
+color orange = color(255, 116, 55);
+color brown = color(179, 103, 77);
+
+boolean rectOverRed = false;
+boolean rectOverDarkPink = false;
+boolean rectOverPink = false;
+boolean rectOverLightPurple = false;
+boolean rectOverPurple = false;
+boolean rectOverLightBlue = false;
+boolean rectOverBlue = false;
+boolean rectOverGreen = false;
+boolean rectOverLightGreen = false;
+boolean rectOverLime = false;
+boolean rectOverYellow = false;
+boolean rectOverLightOrange = false;
+boolean rectOverOrange = false;
+boolean rectOverBrown = false;
+boolean rectOverBlack = false;
+boolean rectOverWhite = false;
+boolean rectOverSmaller = false;
+boolean rectOverBigger = false;
+boolean rectOverCircle = false;
+boolean rectOverSquare = false;
+boolean rectOverCapture = false;
+boolean rectOverSave = false;
+boolean rectOverStartOver = false;
+boolean roundBrush = true;
+
+
+boolean overRectCapture(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+boolean overRectRed(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectDarkPink(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectPink(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectLightPurple(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectPurple(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectLightBlue(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectBlue(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectGreen(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectLightGreen(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectLime(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectYellow(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectLightOrange(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectOrange(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectBrown(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectWhite(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectBlack(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectSmaller(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectBigger(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+boolean overRectCircle(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectSquare(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectSave(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overRectStartOver(int x, int y, int sizeX, int sizeY) {
+  if (mouseX > x && mouseX < x+sizeX && 
+    mouseY > y && mouseY < y+sizeY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 void setup() {
   size(1200, 700);
@@ -31,5 +302,768 @@ void draw() {
     capture();
   } else {
     drawPicture();
+  }
+}
+
+//take the picture when user hits the up button
+void capture() {
+  if (cam.available() == true) {
+    cam.read();
+  }
+  image(cam, 201, 0);
+  update(mouseX,mouseY);
+  if (rectOverCapture == true && mousePressed == true || keyCode == UP) {
+    cam.stop();
+    imageCaptured = get(201,0,1000,height);
+    canDraw = true;
+  }
+}
+
+//Drawing tools
+void drawPicture() {
+  if (roundBrush == true) {
+  drawCircle();
+ } else if (roundBrush == false){
+   drawRectangle();
+ }
+  //change cursor to indicate draw
+  if (mouseX > 200) {
+    cursor(CROSS);
+  } else {
+    cursor(ARROW);
+  }
+
+  if (key == 'l' || key == 'L') {
+    reset();
+  }
+  if (key== '1') {
+
+    filter(POSTERIZE, 5);
+  }
+  if (key == '2') {
+    
+    filter(GRAY);
+  }
+  if (key == '3') {
+    filter(INVERT);
+  }
+  if (key == '4') {
+    filter(THRESHOLD);
+  }
+  if (key == '5') {
+    filter(BLUR, 3);
+  }
+  if (diam <=198) {
+    if (keyCode == RIGHT) {
+      if (keyPressed) {
+        diam = diam+1;
+      }
+    }
+  }
+  if (diam >= 2) {
+
+    if (keyCode == LEFT) {
+      if (keyPressed) {
+        diam = diam-1;
+      }
+    }
+  }
+  if (key == 's' || key == 'S' ) {
+    if (keyPressed) {
+      PImage savedImageKey = get(201,0,1000,height); 
+      savedImageKey.save("image" + n + ".jpg");
+      n=n+1;
+    }
+  }
+  
+  if (key == 'u' || key == 'U') {
+    if (keyPressed) {
+    image(imageCaptured, 201,0);
+    }
+  }
+  
+  if (key == 'w' || key == 'W') {
+    if (keyPressed){
+      noStroke();
+      fill(white);
+      rect(201,0,1000,height);
+    }
+  }
+  
+  if (key == 'b' || key == 'B') {
+    if (keyPressed){
+      noStroke();
+      fill(black);
+      rect(201,0,1000,height);
+    }
+  }
+}
+
+
+
+
+
+
+//resets to video when user wants to restart
+void reset() {
+  canDraw = false;
+  camRestart();
+  capture();
+}
+
+//USed at start and in reset function to reinitialize camera
+void camRestart() {
+
+  if (cameras.length == 0) {
+    println("There are no cameras available for capture.");
+    exit();
+  } else {
+    println("Available cameras:");
+    for (int i = 0; i < cameras.length; i++) {
+      println(cameras[i]);
+    }
+    cam = new Capture(this, cameras[0]);
+    cam.start();
+  }
+}
+
+void drawCircle() {
+   if (mousePressed == true && mouseX > 200) {
+    stroke(value);
+    strokeWeight(diam);
+    fill(value);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+  } 
+}
+
+void drawRectangle() {
+  if (mousePressed == true && mouseX > 200) {
+    noStroke();
+    fill(value);
+    rectMode(CENTER);
+    rect(mouseX, mouseY, diam, diam);
+  } 
+}
+
+//button boolean testing
+void update(int x, int y) {
+  if ( overRectRed(x0, y50, swatchWidth, swatchWidth) ) {
+    rectOverRed = true;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectDarkPink(x50, y50, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = true;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectPink(x100, y50, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = true;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectLightPurple(x150, y50, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = true;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectPurple(x0, y100, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = true;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectLightBlue(x50, y100, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = true;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectBlue(x100, y100, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = true;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectGreen(x150, y100, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = true;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectLightGreen(x0, y150, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = true;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectLime(x50, y150, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = true;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectYellow(x100, y150, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = true;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectLightOrange(x150, y150, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = true;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectOrange(x0, y200, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = true;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectBrown(x50, y200, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = true;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectWhite(x100, y200, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite= true;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectBlack(x150, y200, swatchWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack= true;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectSmaller(x0, y450, x100, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = true;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectBigger(x100, y450, x100, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = true;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectCircle(x0, y500, x100, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= true;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectSquare(x100, y500, x100, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= true;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectSave(x0, y550, menuWidth, y100)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = true;
+    rectOverStartOver = false;
+    rectOverCapture = false;
+  } else if (overRectStartOver(x0, y650, menuWidth, swatchWidth)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = true;
+    rectOverCapture = false;
+  } else if (overRectCapture(x0, y0, menuWidth, y50)) {
+    rectOverRed = false;
+    rectOverDarkPink = false;
+    rectOverPink = false;
+    rectOverLightPurple = false;
+    rectOverPurple = false;
+    rectOverLightBlue = false;
+    rectOverBlue = false;
+    rectOverGreen = false;
+    rectOverLightGreen = false;
+    rectOverLime = false;
+    rectOverYellow = false;
+    rectOverLightOrange = false;
+    rectOverOrange = false;
+    rectOverBrown = false;
+    rectOverWhite=false;
+    rectOverBlack=false;
+    rectOverSmaller = false;
+    rectOverBigger = false;
+    rectOverCircle= false;
+    rectOverSquare= false;
+    rectOverSave = false;
+    rectOverStartOver = false;
+    rectOverCapture = true;
+  }
+}
+
+//button action
+void mouseReleased() {
+  update(mouseX, mouseY);
+  if (rectOverRed == true) {
+    value = color(red);
+  } else if (rectOverDarkPink == true) {
+    value = color(darkPink);
+  } else if (rectOverPink == true) {
+    value = color(pink);
+  } else if (rectOverLightPurple == true) {
+    value = color(lightPurple);
+  } else if (rectOverPurple == true) {
+    value = color(purple);
+  } else if (rectOverLightBlue == true) {
+    value = color(lightBlue);
+  } else if (rectOverBlue == true) {
+    value = color(blue);
+  } else if (rectOverGreen == true) {
+    value = color(green);
+  } else if (rectOverLightGreen == true) {
+    value = color(lightGreen);
+  } else if (rectOverLime == true) {
+    value = color(lime);
+  } else if (rectOverYellow == true) {
+    value = color(yellow);
+  } else if (rectOverLightOrange == true) {
+    value = color(lightOrange);
+  } else if (rectOverOrange == true) {
+    value = color(orange);
+  } else if (rectOverBrown == true) {
+    value = color(brown);
+  } else if (rectOverBlack == true) {
+    value = color(black);
+  } else if (rectOverWhite == true) {
+    value = color(white);
+  }
+
+  if (rectOverCircle == true) {
+    roundBrush = true;
+  } else if (rectOverSquare == true) {
+    roundBrush = false;
+  }
+
+
+  if (rectOverSave == true) {
+    PImage savedImage = get(200, 0, 1000, height);
+    savedImage.save("image" + n + ".jpg");
+    n=n+1;
+  } 
+
+  if (rectOverStartOver == true) {
+    reset();
+  }
+
+  if (diam <=198) {
+    if (rectOverBigger == true) {
+      diam = diam +1;
+    }
+  }
+  if (diam >= 2) {
+    if (rectOverSmaller == true) {
+      diam = diam - 1;
+    }
   }
 }
